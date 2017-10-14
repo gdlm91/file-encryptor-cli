@@ -1,0 +1,33 @@
+{
+  "name": "file-encryptor-cli",
+  "version": "1.0.0",
+  "description": "Simple cli tool for encrypt and decrypt files",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/quadgod/file-encryptor-cli.git"
+  },
+  "bin": {
+    "file-encryptor": "./file-encryptor.js"
+  },
+  "keywords": [
+    "file",
+    "encrypt",
+    "decrypt",
+    "cli",
+    "password"
+  ],
+  "author": "Vitaliy Khudonogov",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/quadgod/file-encryptor-cli/issues"
+  },
+  "homepage": "https://github.com/quadgod/file-encryptor-cli#readme",
+  "dependencies": {
+    "commander": "^2.11.0",
+    "lodash": "^4.17.4"
+  }
+}
