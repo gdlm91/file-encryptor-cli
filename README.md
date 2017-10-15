@@ -5,15 +5,18 @@ a simple cli tool for encrypt and decrypt files
 $ npm i -g file-encryptor-cli
 ```
 ### Commands
-####encrypt
+
 ```bash
 file-encryptor encrypt <file> <password>
+
+example:
+file-encryptor encrypt ./config.js password -> output ./config.js.enc
 ```
+
 params:
 - file - path to file which will be encrypted (required)
 - password - any secret password ;) (required)
 
-####decrypt
 ```bash
 file-encryptor decrypt [options] <file> <password> [dest]
 ```
