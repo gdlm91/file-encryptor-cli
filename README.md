@@ -31,3 +31,5 @@ params:
 - file - path to file which will be decrypted (required)
 - password - any secret password ;) (required)
 - dest - destination file (optional) 
+
+>note: use node version >= 8 (i have't test it at older versions)
