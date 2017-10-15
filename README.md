@@ -1,8 +1,8 @@
 # File encryptor cli tool
 a simple cli tool for encrypt and decrypt files
 ### Installation
-```
-$ npm i -g file-encryptor-cli
+```bash
+npm i -g file-encryptor-cli
 ```
 ### Commands
 
