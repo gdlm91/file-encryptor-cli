@@ -19,6 +19,10 @@ params:
 
 ```bash
 file-encryptor decrypt [options] <file> <password> [dest]
+
+example:
+file-encryptor decrypt -f ./config.js.enc password -> output ./config.js
+file-encryptor decrypt ./config.js.enc password ./decrypted.config.js -> output ./decrypted.config.js
 ```
 options:
 - -f --force - force replace destination file (optional)
