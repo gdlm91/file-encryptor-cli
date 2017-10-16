@@ -21,7 +21,7 @@ params:
 file-encryptor decrypt [options] <file> <password> [dest]
 
 example:
-file-encryptor decrypt -f ./config.js.enc password -> output  ${PWD}/config.js
+file-encryptor decrypt -f ./config.js.enc password -> output ${PWD}/config.js
 file-encryptor decrypt ./config.js.enc password ./config/decrypted.config.js -> output ${PWD}/config/decrypted.config.js
 ```
 options:
