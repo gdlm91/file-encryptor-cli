@@ -1,6 +1,6 @@
 {
   "name": "file-encryptor-cli",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Simple cli tool for encrypt and decrypt files",
   "main": "index.js",
   "scripts": {

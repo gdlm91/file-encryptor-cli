@@ -26,10 +26,10 @@ const encryptFile = function (file, password) {
 };
 
 const decryptFile = function (file, password, dest, force) {
-  dest = dest || _.trimEnd(file, '.enc');
+  dest = dest || path.basename(file, '.enc');
 
   if (!force && isFileExists(dest)) {
-    console.error('Destination file already exists.');
+    console.error('Destination file "' + dest + '" already exists.');
     return;
   }
 
@@ -71,7 +71,7 @@ program
   .option('-f --force', 'force replace destination file')
   .description('decrypt file')
   .action(function (file, password, dest, options) {
-    if (!_.endsWith(file, 'enc')) {
+    if (!_.endsWith(file, '.enc')) {
       console.error('File extension should be ".enc".');
       return;
     }
