@@ -21,8 +21,8 @@ params:
 file-encryptor decrypt [options] <file> <password> [dest]
 
 example:
-file-encryptor decrypt -f ./config.js.enc password -> output ${PWD}/config.js
-file-encryptor decrypt ./config.js.enc password ./config/decrypted.config.js -> output ${PWD}/config/decrypted.config.js
+file-encryptor decrypt -f ./config.js.enc password -> output ./config.js
+file-encryptor decrypt ./config.js.enc password ./config/decrypted.config.js -> output ./config/decrypted.config.js
 ```
 options:
 - -f --force - force replace destination file (optional)
@@ -33,3 +33,4 @@ params:
 - dest - destination file (optional) 
 
 >note: use node version >= 8 (i have't test it at older versions)
+>note: v1.0.7 - please update to this stable version (all bugs fixed)

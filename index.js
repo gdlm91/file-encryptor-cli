@@ -6,7 +6,7 @@ const program = require('commander');
 
 const isFileExists = function (file) {
   try {
-    fs.statSync(file);
+    fs.statSync(path.resolve(path.dirname(file), path.basename(file)));
   } catch (error) {
     return false;
   }
@@ -15,7 +15,7 @@ const isFileExists = function (file) {
 
 const encryptFile = function (file, password) {
   const cipher = crypto.createCipher('aes-256-cbc', password);
-  const input = fs.createReadStream(file);
+  const input = fs.createReadStream(path.resolve(path.dirname(file), path.basename(file)));
   const outputFile = file + '.enc';
   const output = fs.createWriteStream(outputFile);
   input.pipe(cipher).pipe(output).on('finish', function() {
@@ -26,7 +26,7 @@ const encryptFile = function (file, password) {
 };
 
 const decryptFile = function (file, password, dest, force) {
-  dest = dest || path.basename(file, '.enc');
+  dest = dest && path.resolve(path.dirname(dest), path.basename(dest)) || path.resolve(path.dirname(file), path.basename(file, '.enc'));
 
   if (!force && isFileExists(dest)) {
     console.error('Destination file "' + dest + '" already exists.');
@@ -62,7 +62,7 @@ program
     if (isFileExists(file)) {
       encryptFile(file, password);
     } else {
-      console.error('File "' + path.resolve(__dirname, file) + '" not found.');
+      console.error('File "' + path.resolve(path.dirname(file), path.basename(file)) + '" not found.');
     }
   });
 
@@ -78,7 +78,7 @@ program
     if (isFileExists(file)) {
       decryptFile(file, password, dest, options.force);
     } else {
-      console.error('File "' + path.resolve(__dirname, file) + '" not found.')
+      console.error('File "' + path.resolve(path.dirname(file), path.basename(file)) + '" not found.');
     }
   });
 
