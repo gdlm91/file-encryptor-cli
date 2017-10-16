@@ -5,13 +5,8 @@ const crypto = require('crypto');
 const program = require('commander');
 
 const isFileExists = function (file) {
-  const filePath = path.resolve(__dirname, file);
-  if (!_.startsWith(filePath, __dirname)) {
-    console.error('File should be in "' + __dirname + '" folder.');
-    return false;
-  }
   try {
-    fs.statSync(filePath);
+    fs.statSync(file);
   } catch (error) {
     return false;
   }
@@ -21,7 +16,7 @@ const isFileExists = function (file) {
 const encryptFile = function (file, password) {
   const cipher = crypto.createCipher('aes-256-cbc', password);
   const input = fs.createReadStream(file);
-  const outputFile = path.resolve(__dirname, file + '.enc');
+  const outputFile = file + '.enc';
   const output = fs.createWriteStream(outputFile);
   input.pipe(cipher).pipe(output).on('finish', function() {
     input.close();
@@ -31,11 +26,7 @@ const encryptFile = function (file, password) {
 };
 
 const decryptFile = function (file, password, dest, force) {
-  dest = dest && path.resolve(__dirname, dest) || path.resolve(__dirname, _.trimEnd(file, '.enc'));
-  if (!_.startsWith(dest, __dirname)) {
-    console.error('Destination path should be in "' + __dirname + '" folder.');
-    return;
-  }
+  dest = dest || _.trimEnd(file, '.enc');
 
   if (!force && isFileExists(dest)) {
     console.error('Destination file already exists.');
